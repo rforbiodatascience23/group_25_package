@@ -1,3 +1,5 @@
+# Declare global variable to avoid R CMD check warnings
+utils::globalVariables(".data")
 #' Plot the frequency of each unique character in a given string
 #'
 #' This function takes a string as input and plots a bar chart showing the frequency
@@ -35,7 +37,7 @@ plot_character_frequency <- function(input_string){
   counts[["Character"]] <- rownames(counts)
 
   plot <- counts |>
-    ggplot2::ggplot(ggplot2::aes(x = Character, y = Counts, fill = Character)) +
+    ggplot2::ggplot(ggplot2::aes(x = .data$Character, y = .data$Counts, fill = .data$Character)) +
     ggplot2::geom_col() +
     ggplot2::theme_bw() +
     ggplot2::theme(legend.position = "none")
