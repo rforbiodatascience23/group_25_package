@@ -1,0 +1,133 @@
+---
+title: "vignette"
+output: rmarkdown::pdf_document
+vignette: >
+  %\VignetteIndexEntry{vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+[**group 25's GitHub Repository**](https://github.com/rforbiodatascience23/group_25_package)
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# group_25_CentralDogma
+
+This package can be used to replicate the central dogma of molecular biology. The central dogma of biology describes the flow of genetic information: DNA is transcribed into RNA, which is then translated into proteins.
+
+Dependencies for this package: ggplot2 and stringr.
+
+## Library Loading
+
+```{r setup}
+library(centraldogma)
+```
+
+## Function Description
+
+------------------------------------------------------------------------
+
+### generate_DNA
+
+This function creates a random DNA sample of user-defined length (input is an integer defining DNA_length).
+
+**Example**
+
+```{r}
+generate_DNA(10)
+#> [1] "CTCCAGAGGG"
+```
+
+### transcription
+
+Transcribes the DNA sequence to RNA by substitution of the amino acid 'T' with 'U'. The input is a DNA sequence given as a string.
+
+**Example**
+
+```{r}
+transcription("ATCG")
+#> [1] "AUCG"
+```
+
+### mRNA_to_codons
+
+This function splits the mRNA sequence into codons. Inputs are the position at which to start at (int, Default is 1) and the mRNA sequence. It returns a list of codons.
+
+**Example**
+
+```{r}
+# Define an illustrative mRNA sequence (replace with a real sequence when using the package)
+mRNA_seq <- "AACCCGTTAAAGGATCTGTAACAATACTGGACAA"
+
+# Use the defined mRNA sequence in the function
+mRNA_to_codons(mRNA_seq)
+
+#>  [1] "AAC" "CCC" "GTT" "AAA" "GGA" "TCT" "GTA" "AAC" "AAT" "ACT" "GGA" "CAA"
+#> [13] "GAA" "TCA" "TAG" "CTA" "GCA" "TCA" "GTT" "ATG" "GTG" "AGT" "CGA" "ACA"
+#> [25] "GAG" "GAA" "TCT" "TAG" "AGG" "TAT" "GCA" "AGT" "AAA"
+```
+
+### translation
+
+The function translates from codons to amino acid sequences. Input (codons) is a list of codons to translate and output is a string of amino acid sequences.
+
+```{r}
+translation("UUU")
+#> [1] "F"
+```
+
+### plot_character_frequency
+
+This function takes a string as input and plots a bar chart showing the frequency of each unique character in the string. The plot is generated using ggplot2.
+
+**Example**
+
+```{r}
+plot_character_frequency("hello")
+```
+
+## Group Discussion
+
+------------------------------------------------------------------------
+
+### Function Descriptions:
+
+In our package, we created a set of functions that serve as a computational representation of the central dogma of molecular biology:
+
+1.  [**generate_DNA**](https://github.com/rforbiodatascience23/group_25_package/blob/master/R/generate_DNA.R): This function generates a random DNA sequence. It takes an integer `DNA_length` as an input and returns a string representing the DNA sequence. The function utilizes the `sample` function to randomly select nucleotides.
+
+2.  [**transcription**](https://github.com/rforbiodatascience23/group_25_package/blob/master/R/transcription.R): This function transcribes a DNA sequence into an RNA sequence. It takes a string `DNA_seq` as input and returns the transcribed mRNA sequence as a string. The function uses the `gsub` function to replace 'T' with 'U'.
+
+3.  [**mRNA_to_codons**](https://github.com/rforbiodatascience23/group_25_package/blob/master/R/mRNA_to_codons.R): This function splits an mRNA sequence into codons. It takes a string `mRNA_seq` and an integer `start` as inputs and returns a list of codons. The function uses the `substring` function to split the mRNA sequence.
+
+4.  [**translation**](https://github.com/rforbiodatascience23/group_25_package/blob/master/R/translation.R): This function translates a list of codons into an amino acid sequence. It takes a list `codons` as input and returns a string representing the amino acid sequence. The function uses a data table `codon_table` to map codons to amino acids.
+
+5.  [**plot_character_frequency**](https://github.com/rforbiodatascience23/group_25_package/blob/master/R/plot_character_frequency.R): This function plots the frequency of each unique character in a given string. It takes a string `input_string` as input and returns a ggplot2 object. The function uses the `ggplot2` and `stringr` packages for plotting and string manipulation, respectively. We added these packages as dependencies using the `@importFrom` tag in the function description.
+
+Each function is designed to be both intuitive and efficient, ensuring that the package is accessible to both beginners and experts alike.
+
+### Dependencies for Function Five (plot_character_frequency)
+
+For the function [plot_character_frequency](https://github.com/rforbiodatascience23/group_25_package/blob/master/R/plot_character_frequency.R), I incorporated two essential packages: `ggplot2` for plotting and `stringr` for string manipulation. These packages are integral to the function's ability to generate a bar chart of character frequencies from a given string.
+
+To add these packages as dependencies, I used the `@importFrom` tag in the function's Roxygen comments. This ensures that only the specific functions I need from `ggplot2` and `stringr` are imported, rather than the entire packages. See below:
+
+``` r
+#' @importFrom ggplot2 ggplot aes geom_col theme_bw theme
+#' @importFrom stringr str_split boundary str_count
+```
+
+By specifying the functions I need, I keep the package lightweight and reduce potential conflicts with other packages.
+
+### Limits on the Number of Dependencies
+
+In our package, we have been mindful to limit dependencies to only 'ggplot2' and 'stringr', focusing on the essentials needed for DNA sequence manipulation and visualization. This approach not only makes our package more maintainable but also minimizes potential conflicts with other R packages. While we could potentially expand the package's capabilities by adding more dependencies, doing so would increase the complexity and could lead to maintenance challenges down the line. For now, we find the balance between functionality and simplicity to be just right.
+
+### Compare Approaches for Importing Functions
+
+In our package, we primarily used the `@importFrom` tag in the Roxygen comments for each function. This approach allows us to import only the specific functions we need from a package, rather than the entire package, making our package more lightweight. However, using `package::function()` within the code would allow us to call a function without formally importing it. The problem is this can make the code less readable and harder to maintain. For the sake of clarity and efficiency, we chose to use @importFrom.
