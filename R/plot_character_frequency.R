@@ -10,25 +10,25 @@
 #' @importFrom ggplot2 ggplot aes geom_col theme_bw theme
 #' @importFrom stringr str_split boundary str_count
 #' @examples
-#' plotCharacterFrequency("hello")
+#' plot_character_frequency("hello")
 #' @export
-plotCharacterFrequency <- function(input_string){
-  unique_chars <- input_string |>  
+plot_character_frequency <- function(input_string){
+  unique_chars <- input_string |>
     stringr::str_split(pattern = stringr::boundary("character"), simplify = TRUE) |>
-    as.character() |> 
+    as.character() |>
     unique()
-  
-  counts <- sapply(unique_chars, function(char) stringr::str_count(string = input_string, pattern = char)) |>  
+
+  counts <- sapply(unique_chars, function(char) stringr::str_count(string = input_string, pattern = char)) |>
     as.data.frame()
-  
+
   colnames(counts) <- c("Counts")
   counts[["Character"]] <- rownames(counts)
-  
-  plot <- counts |>  
+
+  plot <- counts |>
     ggplot2::ggplot(ggplot2::aes(x = Character, y = Counts, fill = Character)) +
     ggplot2::geom_col() +
     ggplot2::theme_bw() +
     ggplot2::theme(legend.position = "none")
-  
+
   return(plot)
 }
