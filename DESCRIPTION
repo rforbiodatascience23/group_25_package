@@ -2,7 +2,15 @@ Package: centraldogma
 Type: Package
 Title: What the Package Does (Title Case)
 Version: 0.1.0
-Author: Who wrote it
+Author: Authors@R:
+  c(person(given = "Emilie Sofie",
+           family = "Engdal",
+           role = c("aut", "cre"), # There must be a "cre", but there can only be one
+           email = "s194360@student.dtu.dk"), 
+    person(given = "firstname",
+           family = "lastname",
+           role = "aut",
+           email = "your@email.com"))
 Maintainer: The package maintainer <yourself@somewhere.net>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
@@ -13,8 +21,11 @@ Depends:
     R (>= 2.10)
 RoxygenNote: 7.2.3
 Suggests: 
+    knitr,
+    rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Imports: 
     ggplot2,
     stringr
+VignetteBuilder: knitr
