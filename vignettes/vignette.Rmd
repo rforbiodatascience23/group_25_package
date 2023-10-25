@@ -59,6 +59,10 @@ This function splits the mRNA sequence into codons. Inputs are the position at w
 **Example**
 
 ```{r}
+# Define an illustrative mRNA sequence (replace with a real sequence when using the package)
+mRNA_seq <- "AACCCGTTAAAGGATCTGTAACAATACTGGACAA"
+
+# Use the defined mRNA sequence in the function
 mRNA_to_codons(mRNA_seq)
 
 #>  [1] "AAC" "CCC" "GTT" "AAA" "GGA" "TCT" "GTA" "AAC" "AAT" "ACT" "GGA" "CAA"
