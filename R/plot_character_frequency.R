@@ -13,6 +13,16 @@
 #' plot_character_frequency("hello")
 #' @export
 plot_character_frequency <- function(input_string){
+  # Check for empty string
+  if (input_string == "") {
+    stop("Input string cannot be empty")
+  }
+
+  # Check for non-string input
+  if (!is.character(input_string)) {
+    stop("Input must be a string")
+  }
+
   unique_chars <- input_string |>
     stringr::str_split(pattern = stringr::boundary("character"), simplify = TRUE) |>
     as.character() |>
