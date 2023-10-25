@@ -3,17 +3,20 @@
 \docType{data}
 \name{codon_data}
 \alias{codon_data}
-\title{Data table for codons}
+\title{Codon to Amino Acid Mapping}
 \format{
-An object of class \code{character} of length 64.
+A named vector with 64 elements:
+\describe{
+  \item{UUU}{F}
+  \item{UCU}{S}
+  \item{UAU}{Y}
+  ...
 }
-\source{
-\url{https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi?chapter=tgencodes#SG1}
 }
 \usage{
 codon_data
 }
 \description{
-Standard codon table
+A named vector containing the mapping from codons to their corresponding one-letter amino acid codes.
 }
 \keyword{datasets}
