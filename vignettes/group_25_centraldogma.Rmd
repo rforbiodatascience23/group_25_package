@@ -1,11 +1,13 @@
 ---
-title: "vignette"
-output: rmarkdown::html_vignette
+title: "\ "
+output: rmarkdown::pdf_document
 vignette: >
   %\VignetteIndexEntry{vignette}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+
+[**click to view group 25's GitHub Repository**](https://github.com/rforbiodatascience23/group_25_package)
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -14,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# CentralDogma
+# group_25_CentralDogma
 
 This package can be used to replicate the central dogma of molecular biology. The central dogma of biology describes the flow of genetic information: DNA is transcribed into RNA, which is then translated into proteins.
 
@@ -26,10 +28,7 @@ Dependencies for this package: ggplot2 and stringr.
 library(centraldogma)
 ```
 
-## Function Description
-
-------------------------------------------------------------------------
-
+## Function Descriptions
 ### generate_DNA
 
 This function creates a random DNA sample of user-defined length (input is an integer defining DNA_length).
@@ -79,4 +78,24 @@ translation("UUU")
 #> [1] "F"
 ```
 
-### baar_count
+### plot_character_frequency
+
+This function takes a string as input and plots a bar chart showing the frequency of each unique character in the string. The plot is generated using ggplot2.
+
+**Example**
+
+```{r, include=FALSE}
+plot_character_frequency("hello")
+```
+
+### Dependencies for Function Five (plot_character_frequency)
+
+For the function [plot_character_frequency](https://github.com/rforbiodatascience23/group_25_package/blob/master/R/plot_character_frequency.R), I used `ggplot2` for plotting and `stringr` for string manipulation. Added via `@importFrom` in Roxygen comments. By specifying the functions I need, I keep the package lightweight and reduce potential conflicts with other packages.
+
+### Limits on the Number of Dependencies
+
+We limited dependencies to `ggplot2` and `stringr` to keep the package lightweight and avoid conflicts. While adding more could enhance the functionality, it would also complicate the maintenance.
+
+### Compare Approaches for Importing Functions
+
+We chose to use `@importFrom` to import only what is needed, making the package efficient. Using `package::function()` could clutter our code, so we avoided it for clarity.
