@@ -82,8 +82,6 @@ translation("UUU")
 
 This function takes a string as input and plots a bar chart showing the frequency of each unique character in the string. The plot is generated using ggplot2.
 
-**Example**
-
 ```{r, include=FALSE}
 plot_character_frequency("hello")
 ```
