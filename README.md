@@ -28,8 +28,7 @@ is an integer defining DNA_length).
 
 ``` r
 generate_DNA(10)
-#> [1] "GGCGTCGTAC"
-#> [1] "CTCCAGAGGG"
+#> [1] "GGTCAATCCC"
 ```
 
 ### transcription
@@ -41,7 +40,6 @@ Transcribes the DNA sequence to RNA by substitution of the amino acid
 
 ``` r
 transcription("ATCG")
-#> [1] "AUCG"
 #> [1] "AUCG"
 ```
 
@@ -60,10 +58,6 @@ mRNA_seq <- "AACCCGTTAAAGGATCTGTAACAATACTGGACAA"
 # Use the defined mRNA sequence in the function
 mRNA_to_codons(mRNA_seq)
 #>  [1] "AAC" "CCG" "TTA" "AAG" "GAT" "CTG" "TAA" "CAA" "TAC" "TGG" "ACA"
-
-#>  [1] "AAC" "CCC" "GTT" "AAA" "GGA" "TCT" "GTA" "AAC" "AAT" "ACT" "GGA" "CAA"
-#> [13] "GAA" "TCA" "TAG" "CTA" "GCA" "TCA" "GTT" "ATG" "GTG" "AGT" "CGA" "ACA"
-#> [25] "GAG" "GAA" "TCT" "TAG" "AGG" "TAT" "GCA" "AGT" "AAA"
 ```
 
 ### translation
@@ -75,7 +69,6 @@ amino acid sequences.
 ``` r
 translation("UUU")
 #> [1] "F"
-#> [1] "F"
 ```
 
 ### plot_character_frequency
@@ -83,6 +76,12 @@ translation("UUU")
 This function takes a string as input and plots a bar chart showing the
 frequency of each unique character in the string. The plot is generated
 using ggplot2.
+
+``` r
+plot_character_frequency(mRNA_seq)
+```
+
+![](README_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
 
 ### Dependencies for Function Five (plot_character_frequency)
 

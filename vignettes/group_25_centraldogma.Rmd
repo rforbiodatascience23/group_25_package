@@ -75,8 +75,8 @@ translation("UUU")
 
 This function takes a string as input and plots a bar chart showing the frequency of each unique character in the string. The plot is generated using ggplot2.
 
-```{r}
-plot_character_frequency("mRNA_seq")
+```{r, fig.width=2, fig.height=2}
+plot_character_frequency(mRNA_seq)
 ```
 
 ### Dependencies for Function Five (plot_character_frequency)
