@@ -37,7 +37,6 @@ This function creates a random DNA sample of user-defined length (input is an in
 
 ```{r}
 generate_DNA(10)
-#> [1] "CTCCAGAGGG"
 ```
 
 ### transcription
@@ -48,7 +47,6 @@ Transcribes the DNA sequence to RNA by substitution of the amino acid 'T' with '
 
 ```{r}
 transcription("ATCG")
-#> [1] "AUCG"
 ```
 
 ### mRNA_to_codons
@@ -63,10 +61,6 @@ mRNA_seq <- "AACCCGTTAAAGGATCTGTAACAATACTGGACAA"
 
 # Use the defined mRNA sequence in the function
 mRNA_to_codons(mRNA_seq)
-
-#>  [1] "AAC" "CCC" "GTT" "AAA" "GGA" "TCT" "GTA" "AAC" "AAT" "ACT" "GGA" "CAA"
-#> [13] "GAA" "TCA" "TAG" "CTA" "GCA" "TCA" "GTT" "ATG" "GTG" "AGT" "CGA" "ACA"
-#> [25] "GAG" "GAA" "TCT" "TAG" "AGG" "TAT" "GCA" "AGT" "AAA"
 ```
 
 ### translation
@@ -75,15 +69,14 @@ The function translates from codons to amino acid sequences. Input (codons) is a
 
 ```{r}
 translation("UUU")
-#> [1] "F"
 ```
 
 ### plot_character_frequency
 
 This function takes a string as input and plots a bar chart showing the frequency of each unique character in the string. The plot is generated using ggplot2.
 
-```{r, include=FALSE}
-plot_character_frequency("hello")
+```{r}
+plot_character_frequency("mRNA_seq")
 ```
 
 ### Dependencies for Function Five (plot_character_frequency)
